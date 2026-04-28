@@ -7097,6 +7097,30 @@
   },
   {
     "room_id": 41,
+    "strat_id": 2,
+    "video_id": 10179,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 41,
+    "strat_id": 7,
+    "video_id": 10176,
+    "created_user": "Sam",
+    "note": "Speedball",
+    "dev_note": ""
+  },
+  {
+    "room_id": 41,
+    "strat_id": 9,
+    "video_id": 10177,
+    "created_user": "Sam",
+    "note": "Controlled Blue Springball Bounce",
+    "dev_note": ""
+  },
+  {
+    "room_id": 41,
     "strat_id": 15,
     "video_id": 2068,
     "created_user": "Sam",
@@ -7933,6 +7957,14 @@
     "video_id": 2934,
     "created_user": "Sam",
     "note": "Kill all the Hoppers as far left as possible to avoid touching the Bomb blocks. Roll back and forth to put the door on and off camera to overload PLMs. If required, drop a Power Bomb against the Power Bomb wall and leave G-Mode after laying it to open the way.",
+    "dev_note": ""
+  },
+  {
+    "room_id": 38,
+    "strat_id": 87,
+    "video_id": 10144,
+    "created_user": "Sam",
+    "note": "",
     "dev_note": ""
   },
   {
@@ -8980,6 +9012,14 @@
     "strat_id": 90,
     "video_id": 7009,
     "created_user": "maddo",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
+    "strat_id": 105,
+    "video_id": 8851,
+    "created_user": "nn",
     "note": "",
     "dev_note": ""
   },
@@ -13001,6 +13041,14 @@
   },
   {
     "room_id": 58,
+    "strat_id": 65,
+    "video_id": 8687,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 58,
     "strat_id": 68,
     "video_id": 2993,
     "created_user": "Sam",
@@ -13269,6 +13317,14 @@
     "video_id": 2121,
     "created_user": "Sam",
     "note": "A way to break the bomb blocks is required.",
+    "dev_note": ""
+  },
+  {
+    "room_id": 58,
+    "strat_id": 67,
+    "video_id": 8689,
+    "created_user": "nn",
+    "note": "",
     "dev_note": ""
   },
   {
@@ -13657,6 +13713,14 @@
   },
   {
     "room_id": 61,
+    "strat_id": 95,
+    "video_id": 8639,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "using 1 frame stationary spinjump for bounce leniency."
+  },
+  {
+    "room_id": 61,
     "strat_id": 21,
     "video_id": 869,
     "created_user": "NZT",
@@ -13894,6 +13958,30 @@
     "created_user": "maddo",
     "note": "From Statues Hallway (height 2, turnaround)",
     "dev_note": ""
+  },
+  {
+    "room_id": 61,
+    "strat_id": 97,
+    "video_id": 8683,
+    "created_user": "nn",
+    "note": "Wave Beam, Screw Attack",
+    "dev_note": ""
+  },
+  {
+    "room_id": 61,
+    "strat_id": 97,
+    "video_id": 8684,
+    "created_user": "nn",
+    "note": "Wave Beam, Power Bomb",
+    "dev_note": ""
+  },
+  {
+    "room_id": 61,
+    "strat_id": 98,
+    "video_id": 8682,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "you can also gain flashsuit and leave with inital spark (striaght up)."
   },
   {
     "room_id": 61,
@@ -14885,6 +14973,14 @@
     "video_id": 5328,
     "created_user": "maddo",
     "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 76,
+    "strat_id": 31,
+    "video_id": 8916,
+    "created_user": "nn",
+    "note": "Samus Eater Shinecharge",
     "dev_note": ""
   },
   {
@@ -17609,6 +17705,38 @@
   },
   {
     "room_id": 83,
+    "strat_id": 52,
+    "video_id": 8701,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "either frame of spikesuit works"
+  },
+  {
+    "room_id": 83,
+    "strat_id": 54,
+    "video_id": 8705,
+    "created_user": "nn",
+    "note": "use flash suit to re-spikesuit and leave with spark (retain a flash suit)",
+    "dev_note": ""
+  },
+  {
+    "room_id": 83,
+    "strat_id": 55,
+    "video_id": 8691,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "1 frame jump gives more leniancy on landing in the thorns without bonking the wall (and loosing momentum)"
+  },
+  {
+    "room_id": 83,
+    "strat_id": 56,
+    "video_id": 8693,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "1 frame jump gives more leniancy on landing in the thorns without bonking the wall (and loosing momentum)"
+  },
+  {
+    "room_id": 83,
     "strat_id": 9,
     "video_id": 8070,
     "created_user": "Sam",
@@ -17782,6 +17910,30 @@
     "created_user": "nn",
     "note": "",
     "dev_note": ""
+  },
+  {
+    "room_id": 83,
+    "strat_id": 58,
+    "video_id": 8700,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "only frame 1 of spikesuit will leave, frame 2 bonks platfrorm"
+  },
+  {
+    "room_id": 83,
+    "strat_id": 60,
+    "video_id": 8704,
+    "created_user": "nn",
+    "note": "use flash suit to re-spikesuit and leave with spark (retain a flash suit)",
+    "dev_note": ""
+  },
+  {
+    "room_id": 83,
+    "strat_id": 61,
+    "video_id": 8696,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "1 frame jump gives more leniancy on landing in the thorns without bonking the wall only first frame of spikesuit will clear the pillar"
   },
   {
     "room_id": 84,
@@ -30830,6 +30982,14 @@
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
+  },
+  {
+    "room_id": 127,
+    "strat_id": 138,
+    "video_id": 9776,
+    "created_user": "nn",
+    "note": "Frozen Mella",
+    "dev_note": "it's probably do-able without ice but it makes it a lot easier."
   },
   {
     "room_id": 127,
@@ -46457,6 +46617,14 @@
   },
   {
     "room_id": 170,
+    "strat_id": 54,
+    "video_id": 8943,
+    "created_user": "Sam",
+    "note": "Flash Suit Preservation",
+    "dev_note": ""
+  },
+  {
+    "room_id": 170,
     "strat_id": 55,
     "video_id": 4202,
     "created_user": "Sam",
@@ -46909,6 +47077,22 @@
     "video_id": 3090,
     "created_user": "maddo",
     "note": "Keeping the top Sciser off-camera until ready",
+    "dev_note": ""
+  },
+  {
+    "room_id": 174,
+    "strat_id": 269,
+    "video_id": 8736,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "An easier but more time consuming setup can be done on the the first hill"
+  },
+  {
+    "room_id": 174,
+    "strat_id": 270,
+    "video_id": 8735,
+    "created_user": "nn",
+    "note": "",
     "dev_note": ""
   },
   {
@@ -50145,6 +50329,30 @@
   },
   {
     "room_id": 184,
+    "strat_id": 39,
+    "video_id": 9133,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 184,
+    "strat_id": 40,
+    "video_id": 9134,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "Suitless, Puyo Hit"
+  },
+  {
+    "room_id": 184,
+    "strat_id": 40,
+    "video_id": 9135,
+    "created_user": "nn",
+    "note": "Suitless, no Puyo Hit",
+    "dev_note": ""
+  },
+  {
+    "room_id": 184,
     "strat_id": 41,
     "video_id": 7606,
     "created_user": "nn",
@@ -52537,6 +52745,22 @@
   },
   {
     "room_id": 196,
+    "strat_id": 79,
+    "video_id": 8712,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 196,
+    "strat_id": 80,
+    "video_id": 8713,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 196,
     "strat_id": 19,
     "video_id": 6110,
     "created_user": "Sam",
@@ -52913,11 +53137,35 @@
   },
   {
     "room_id": 196,
+    "strat_id": 82,
+    "video_id": 8714,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 196,
+    "strat_id": 83,
+    "video_id": 8715,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 196,
     "strat_id": 44,
     "video_id": 5793,
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
+  },
+  {
+    "room_id": 196,
+    "strat_id": 85,
+    "video_id": 8711,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "no need for gravity here"
   },
   {
     "room_id": 196,
@@ -56670,6 +56918,14 @@
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
+  },
+  {
+    "room_id": 180,
+    "strat_id": 44,
+    "video_id": 9637,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": "go thru the tunnel and jump to scroll the camera else the menus wont go to the correct position."
   },
   {
     "room_id": 180,
