@@ -1240,7 +1240,7 @@
         "x": 6,
         "y": 69,
         "spicy": true,
-        "requires": ["canHeatRun", {"heatFrames": 280}, "canConsecutiveWalljump"],
+        "requires": ["canHeatRun", {"heatFrames": 280}, "canConsecutiveWallJump"],
         "camera_offset_y": -4
     },
     {
@@ -1334,7 +1334,7 @@
         "node_id": 2,
         "x": 56,
         "y": 21,
-        "requires": ["canHeatRun", {"heatFrames": 160}, {"or": ["canWalljump", "h_crouchJumpDownGrab"]}]
+        "requires": ["canHeatRun", {"heatFrames": 160}, {"or": ["canWallJump", "h_crouchJumpDownGrab"]}]
     },
     {
         "name": "Pillar Room Right",
@@ -1653,7 +1653,7 @@
         "x": 34.5,
         "y": 10,
         "spicy": true,
-        "requires": [{"spikeHits": 1}, "canInsaneWalljump"],
+        "requires": [{"spikeHits": 1}, "canInsaneWallJump"],
         "camera_offset_x": -12
     },
     {
@@ -1663,7 +1663,7 @@
         "x": 64.5,
         "y": 8,
         "spicy": true,
-        "requires": [{"spikeHits": 1}, "canHorizontalDamageBoost", "canTrickyJump", "canPreciseWalljump"],
+        "requires": [{"spikeHits": 1}, "canHorizontalDamageBoost", "canTrickyJump", "canPreciseWallJump"],
         "camera_offset_x": -12,
         "devNote": ["This is as far right as we can adjust the camera without activating the Mochtroid."]
     },
@@ -1778,7 +1778,7 @@
         "node_id": 1,
         "x": 56.5,
         "y": 26,
-        "requires": ["canWalljump"]
+        "requires": ["canWallJump"]
     },
     {
         "name": "Thread The Needle Room",
@@ -2025,7 +2025,7 @@
         "node_id": 2,
         "x": 44.5,
         "y": 45,
-        "requires": [{"or": ["canWalljump", "h_crouchJumpDownGrab"]}]
+        "requires": [{"or": ["canWallJump", "h_crouchJumpDownGrab"]}]
     },
     {
         "name": "Tourian Eye Door Room",
@@ -2348,7 +2348,7 @@
             "canHeatRun", 
             {"heatFrames": 60},
             {"or": [
-                "canWalljump",
+                "canWallJump",
                 "h_crouchJumpDownGrab"
             ]}
         ],

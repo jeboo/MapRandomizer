@@ -11,7 +11,7 @@
     {
       "name": "Missing Tech",
       "globalState": {
-        "disabledTech": ["canWalljump"]
+        "disabledTech": ["canWallJump"]
       },
       "startRoomId": 0,
       "startNodeId": 1,
