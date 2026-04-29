@@ -339,7 +339,7 @@
     "room_id": 7,
     "room_name": "The Moat",
     "notable_id": 3,
-    "name": "CWJ Bomb Boost",
+    "name": "Walljump Bomb Boost",
     "difficulty": "Extreme",
     "video_id": 7142
   },
@@ -814,6 +814,14 @@
     "name": "Wall Ice Clip X-Ray Climb",
     "difficulty": "Extreme",
     "video_id": 3102
+  },
+  {
+    "room_id": 59,
+    "room_name": "Big Pink",
+    "notable_id": 14,
+    "name": "Zeb Damage Boost",
+    "difficulty": "Very Hard",
+    "video_id": 4677
   },
   {
     "room_id": 58,

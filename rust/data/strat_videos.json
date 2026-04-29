@@ -37153,6 +37153,14 @@
   },
   {
     "room_id": 137,
+    "strat_id": 72,
+    "video_id": 423,
+    "created_user": "Osse101",
+    "note": "This is possible without morph.",
+    "dev_note": ""
+  },
+  {
+    "room_id": 137,
     "strat_id": 35,
     "video_id": 521,
     "created_user": "Osse101",
@@ -37285,14 +37293,6 @@
     "video_id": 520,
     "created_user": "Osse101",
     "note": "",
-    "dev_note": ""
-  },
-  {
-    "room_id": 137,
-    "strat_id": 72,
-    "video_id": 423,
-    "created_user": "Osse101",
-    "note": "This is possible without morph.",
     "dev_note": ""
   },
   {

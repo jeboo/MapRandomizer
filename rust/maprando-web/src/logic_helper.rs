@@ -596,7 +596,12 @@ fn make_notable_templates<'a>(
         let notable_id = notable_info.notable_id;
         let notable_name = notable_info.name.clone();
         let notable_note = notable_info.note.clone();
-        let notable_data = &preset_data.notable_data_map[&(room_id, notable_id)];
+        let notable_data = &preset_data
+            .notable_data_map
+            .get(&(room_id, notable_id))
+            .unwrap_or_else(|| {
+                panic!("No notable data found for room ID {room_id} notable ID {notable_id}")
+            });
         let difficulty_name = &notable_data.difficulty;
         let mut strats: Vec<RoomStrat> = vec![];
         let difficulty_idx = preset_data.difficulty_levels.index_by_key[difficulty_name];

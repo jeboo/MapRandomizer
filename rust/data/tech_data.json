@@ -517,55 +517,55 @@
     },
     {
         "tech_id": 76,
-        "name": "canWalljump",
+        "name": "canWallJump",
         "difficulty": "Basic",
         "video_id": 901
     },
     {
         "tech_id": 77,
-        "name": "canPreciseWalljump",
+        "name": "canPreciseWallJump",
         "difficulty": "Medium",
         "video_id": 842
     },
     {
         "tech_id": 78,
-        "name": "canTrickyWalljump",
+        "name": "canTrickyWallJump",
         "difficulty": "Hard",
         "video_id": 1036
     },
     {
         "tech_id": 79,
-        "name": "canInsaneWalljump",
+        "name": "canInsaneWallJump",
         "difficulty": "Extreme",
         "video_id": 999
     },
     {
         "tech_id": 80,
-        "name": "canConsecutiveWalljump",
+        "name": "canConsecutiveWallJump",
         "difficulty": "Medium",
         "video_id": 1029
     },
     {
         "tech_id": 81,
-        "name": "canFastWalljumpClimb",
+        "name": "canFastWallJumpClimb",
         "difficulty": "Expert",
         "video_id": 951
     },
     {
         "tech_id": 83,
-        "name": "canUnderwaterWalljump",
+        "name": "canUnderwaterWallJump",
         "difficulty": "Extreme",
         "video_id": 976
     },
     {
         "tech_id": 187,
-        "name": "canLongUnderwaterWalljump",
+        "name": "canLongUnderwaterWallJump",
         "difficulty": "Insane",
         "video_id": 123
     },
     {
         "tech_id": 186,
-        "name": "canUnderwaterWalljumpBreakFree",
+        "name": "canUnderwaterWallJumpBreakFree",
         "difficulty": "Beyond",
         "video_id": 1125
     },
@@ -817,7 +817,7 @@
     },
     {
         "tech_id": 124,
-        "name": "canWalljumpWithCharge",
+        "name": "canWallJumpWithCharge",
         "difficulty": "Very Hard",
         "video_id": 926
     },
@@ -1099,7 +1099,7 @@
     },
     {
         "tech_id": 160,
-        "name": "canSuperJump",
+        "name": "canSuperjump",
         "difficulty": "Insane",
         "video_id": 9058
     },

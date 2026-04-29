@@ -36,7 +36,7 @@
         },
         {
             "id": 76,
-            "name": "canWalljump",
+            "name": "canWallJump",
             "enabled": true
         },
         {
@@ -91,12 +91,12 @@
         },
         {
             "id": 77,
-            "name": "canPreciseWalljump",
+            "name": "canPreciseWallJump",
             "enabled": true
         },
         {
             "id": 80,
-            "name": "canConsecutiveWalljump",
+            "name": "canConsecutiveWallJump",
             "enabled": true
         },
         {
@@ -216,7 +216,7 @@
         },
         {
             "id": 78,
-            "name": "canTrickyWalljump",
+            "name": "canTrickyWallJump",
             "enabled": true
         },
         {
@@ -456,7 +456,7 @@
         },
         {
             "id": 124,
-            "name": "canWalljumpWithCharge",
+            "name": "canWallJumpWithCharge",
             "enabled": true
         },
         {
@@ -576,7 +576,7 @@
         },
         {
             "id": 81,
-            "name": "canFastWalljumpClimb",
+            "name": "canFastWallJumpClimb",
             "enabled": true
         },
         {
@@ -826,12 +826,12 @@
         },
         {
             "id": 79,
-            "name": "canInsaneWalljump",
+            "name": "canInsaneWallJump",
             "enabled": true
         },
         {
             "id": 83,
-            "name": "canUnderwaterWalljump",
+            "name": "canUnderwaterWallJump",
             "enabled": true
         },
         {
@@ -1061,7 +1061,7 @@
         },
         {
             "id": 187,
-            "name": "canLongUnderwaterWalljump",
+            "name": "canLongUnderwaterWallJump",
             "enabled": true
         },
         {
@@ -1091,7 +1091,7 @@
         },
         {
             "id": 160,
-            "name": "canSuperJump",
+            "name": "canSuperjump",
             "enabled": true
         },
         {
@@ -1176,7 +1176,7 @@
         },
         {
             "id": 186,
-            "name": "canUnderwaterWalljumpBreakFree",
+            "name": "canUnderwaterWallJumpBreakFree",
             "enabled": true
         },
         {
@@ -1492,6 +1492,13 @@
             "notable_id": 7,
             "room_name": "Blue Brinstar Energy Tank Room",
             "notable_name": "Fast Wall Jump Spark",
+            "enabled": true
+        },
+        {
+            "room_id": 59,
+            "notable_id": 14,
+            "room_name": "Big Pink",
+            "notable_name": "Zeb Damage Boost",
             "enabled": true
         },
         {
@@ -2765,7 +2772,7 @@
             "room_id": 7,
             "notable_id": 3,
             "room_name": "The Moat",
-            "notable_name": "CWJ Bomb Boost",
+            "notable_name": "Walljump Bomb Boost",
             "enabled": true
         },
         {
