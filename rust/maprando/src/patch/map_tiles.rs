@@ -815,6 +815,8 @@ pub fn render_tile(
                     &mut data,
                     3,
                     &vec![
+                        (3, 1),
+                        (4, 1),
                         (2, 2),
                         (3, 2),
                         (4, 2),
@@ -1420,34 +1422,45 @@ pub fn render_tile(
         None => {}
     }
 
-    draw_edge(
-        TileSide::Top,
-        tile.top,
-        &mut data,
-        settings,
-        customize_settings,
-    );
-    draw_edge(
-        TileSide::Bottom,
-        tile.bottom,
-        &mut data,
-        settings,
-        customize_settings,
-    );
-    draw_edge(
-        TileSide::Left,
-        tile.left,
-        &mut data,
-        settings,
-        customize_settings,
-    );
-    draw_edge(
-        TileSide::Right,
-        tile.right,
-        &mut data,
-        settings,
-        customize_settings,
-    );
+    match tile.interior {
+        MapTileInterior::AmmoRefill if em.refill_station == EnhancedMapOther::Icon => {}
+        MapTileInterior::EnergyRefill if em.refill_station == EnhancedMapOther::Icon => {}
+        MapTileInterior::DoubleRefill if em.refill_station == EnhancedMapOther::Icon => {}
+        MapTileInterior::Ship if em.refill_station == EnhancedMapOther::Icon => {}
+        MapTileInterior::SaveStation => {}
+        MapTileInterior::MapStation if em.map_station == EnhancedMapOther::Icon => {}
+        MapTileInterior::Objective if em.objectives == EnhancedMapOther::Icon => {}
+        _ => {
+            draw_edge(
+                TileSide::Top,
+                tile.top,
+                &mut data,
+                settings,
+                customize_settings,
+            );
+            draw_edge(
+                TileSide::Bottom,
+                tile.bottom,
+                &mut data,
+                settings,
+                customize_settings,
+            );
+            draw_edge(
+                TileSide::Left,
+                tile.left,
+                &mut data,
+                settings,
+                customize_settings,
+            );
+            draw_edge(
+                TileSide::Right,
+                tile.right,
+                &mut data,
+                settings,
+                customize_settings,
+            );
+        }
+    }
     Ok(data)
 }
 
@@ -1786,15 +1799,19 @@ impl<'a> MapPatcher<'a> {
         self.index_tile(tile.clone(), Some(0x11))?;
         self.write_hud_tile_2bpp(0x11, self.render_tile(tile.clone())?)?;
 
+        let (w, d) = match self.customize_settings.map_theme {
+            MapTheme::Light => (3, 4),
+            MapTheme::Dark => (4, 1),
+        };
         let data = [
-            [3, 0, 0, 0, 0, 0, 0, 0],
-            [3, 0, 0, 0, 0, 0, 0, 0],
-            [3, 0, 0, 0, 0, 0, 0, 0],
-            [4, 0, 0, 0, 0, 0, 0, 0],
-            [4, 0, 0, 0, 0, 0, 0, 0],
-            [3, 0, 0, 0, 0, 0, 0, 0],
-            [3, 0, 0, 0, 0, 0, 0, 0],
-            [3, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
+            [d, 0, 0, 0, 0, 0, 0, 0],
+            [d, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
+            [w, 0, 0, 0, 0, 0, 0, 0],
         ];
         self.write_map_tile_4bpp(0x12, data)?;
         self.write_hud_tile_2bpp(0x12, data)?;
@@ -2519,7 +2536,7 @@ impl<'a> MapPatcher<'a> {
             // ideal as the markings will still show as partial revealed even after the
             // save/refill tile is explored, but it's the best we can do without a significant
             // overhaul of the ASM; and it's unclear if this option will find much use anyway.
-            let palette = if partial { 0x0C00 } else { 0x0800 };
+            let palette = if partial { 0x0C00 } else { 0x1C00 };
             let room_ptr = self.game_data.room_ptr_by_id[&room_id];
             let room_idx = self.game_data.room_idx_by_ptr[&room_ptr];
             let room = &self.game_data.room_geometry[room_idx];
