@@ -2455,7 +2455,15 @@ impl<'a> MapPatcher<'a> {
 
         if imr_settings.all_areas {
             // allow pause map area switching to all areas from start of game:
-            self.rom.write_u16(area_seen_addr, 0x003F)?;
+            // Only show areas that actually exist (e.g. for Small maps, some will not).
+            let mut area_mask = 0;
+            for area in 0..6 {
+                if self.area_min_x[area] != isize::MAX {
+                    area_mask |= 1 << area;
+                }
+            }
+            log::info!("Initial map reveal includes all areas, area_mask={area_mask:06b}");
+            self.rom.write_u16(area_seen_addr, area_mask)?;
         } else {
             self.rom.write_u16(area_seen_addr, 0x0000)?;
         }
