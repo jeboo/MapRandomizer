@@ -471,8 +471,13 @@ fn draw_edge(
                 set_wall_pixel(tile, 0, wall_color);
                 set_wall_pixel(tile, 1, wall_color);
                 set_wall_pixel(tile, 2, wall_color);
-                set_wall_pixel(tile, 3, 13);
-                set_wall_pixel(tile, 4, 13);
+                if customize_settings.map_theme == MapTheme::Dark {
+                    set_wall_pixel(tile, 3, 5);
+                    set_wall_pixel(tile, 4, 5);
+                } else {
+                    set_wall_pixel(tile, 3, 13);
+                    set_wall_pixel(tile, 4, 13);
+                }
                 set_wall_pixel(tile, 5, wall_color);
                 set_wall_pixel(tile, 6, wall_color);
                 set_wall_pixel(tile, 7, wall_color);
