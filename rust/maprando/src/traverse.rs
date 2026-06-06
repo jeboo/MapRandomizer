@@ -573,31 +573,23 @@ pub struct LockedDoorData {
 type LocalStateArray = ArrayVec<LocalState, NUM_COST_METRICS>;
 
 fn apply_link(link: &Link, mut local: LocalStateArray, cx: &TraversalContext) -> LocalStateArray {
-    if cx.reverse {
-        if !link.end_with_shinecharge {
-            local.retain(|x| x.shinecharge_frames_remaining == 0);
-        }
-    } else {
-        if !link.start_with_shinecharge {
-            for loc in &mut local {
-                loc.shinecharge_frames_remaining = 0;
-            }
+    if cx.reverse && !link.end_with_shinecharge {
+        local.retain(|x| x.shinecharge_frames_remaining == 0);
+    } else if !cx.reverse && !link.start_with_shinecharge {
+        for loc in &mut local {
+            loc.shinecharge_frames_remaining = 0;
         }
     }
     local = apply_requirement_complex(&link.requirement, local, cx);
-    if cx.reverse {
-        if !link.start_with_shinecharge {
-            local.retain(|x| x.shinecharge_frames_remaining == 0);
-        }
-    } else {
-        if !link.end_with_shinecharge {
-            for loc in &mut local {
-                loc.shinecharge_frames_remaining = 0;
-            }
+    if cx.reverse && !link.start_with_shinecharge {
+        local.retain(|x| x.shinecharge_frames_remaining == 0);
+    } else if !cx.reverse && !link.end_with_shinecharge {
+        for loc in &mut local {
+            loc.shinecharge_frames_remaining = 0;
         }
     }
-    for x in &mut local {
-        x.length += link.length;
+    for loc in &mut local {
+        loc.length += link.length;
     }
     local
 }
