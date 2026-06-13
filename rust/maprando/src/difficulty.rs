@@ -278,9 +278,11 @@ fn get_cross_room_reqs(link: &Link, game_data: &GameData) -> Requirement {
                     reqs.push(Requirement::Tech(
                         game_data.tech_isv.index_by_key[&TECH_ID_CAN_SIDE_PLATFORM_CROSS_ROOM_JUMP],
                     ));
+                    let mut or_reqs = vec![];
                     for p in platforms {
-                        reqs.push(p.requirement.clone());
+                        or_reqs.push(p.requirement.clone());
                     }
+                    reqs.push(Requirement::make_or(or_reqs));
                 }
                 MainEntranceCondition::ComeInWithGrappleSwing { .. } => {
                     reqs.push(Requirement::Tech(
