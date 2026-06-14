@@ -719,6 +719,10 @@ impl Patcher<'_> {
             patches.push("fix_hyper_slowlock");
         }
 
+        if self.settings.quality_of_life_settings.mother_brain_fight == MotherBrainFight::Short {
+            patches.push("mb_short_samus_standup");
+        }
+
         match self.settings.objective_settings.objective_screen {
             ObjectiveScreen::Disabled => {}
             ObjectiveScreen::Enabled => {
@@ -1634,6 +1638,10 @@ impl Patcher<'_> {
     }
 
     fn apply_mother_brain_fight_patches(&mut self) -> Result<()> {
+        let fast_cutscenes = self
+            .settings
+            .quality_of_life_settings
+            .fast_mother_brain_cutscene;
         if self.settings.quality_of_life_settings.supers_double {
             // Make Supers do double damage to Mother Brain:
             self.rom.write_u8(snes2pc(0xB4F1D5), 0x84)?;
@@ -1644,13 +1652,20 @@ impl Patcher<'_> {
                 // See fast_mother_brain_cutscene.asm patch for baseline changes to speed up cutscenes.
             }
             MotherBrainFight::Short => {
-                // Make Mother Brain 1 finish faster:
-                for addr in &[0x897D, 0x89AF, 0x89E1, 0x8A09, 0x8A31, 0x8A63, 0x8A95] {
-                    self.rom.write_u16(snes2pc(0xA90000 + addr), 0x10)?; // cut delay in half for tubes to fall
+                if fast_cutscenes {
+                    // Make Mother Brain 1 finish faster:
+                    // cut delay in half for tubes to fall
+                    for addr in &[0x897D, 0x89AF, 0x89E1, 0x8A09, 0x8A31, 0x8A63, 0x8A95] {
+                        self.rom.write_u16(snes2pc(0xA90000 + addr), 0x10)?;
+                    }
+                    // Skip the slow movement to the right when MB2 is preparing to finish Samus off
+                    self.rom.write_n(snes2pc(0xA9BB24), &[0xEA; 3])?;
                 }
-
-                // Skip the slow movement to the right when MB2 is preparing to finish Samus off
-                self.rom.write_n(snes2pc(0xA9BB24), &[0xEA; 3])?;
+                // Silence the music and make Samus stand up when Mother Brain starts to fade to corpse
+                self.rom.write_n(
+                    snes2pc(0xA9B1BE),
+                    &[0x20, 0x00, 0xFD], // JSR 0xFD00  (must match address in mb_short_samus_standup.asm)
+                )?;
 
                 // After finishing Samus off (down to 100 energy or lower), skip to Mother Brain exploding:
                 self.rom.write_u16(snes2pc(0xA9BD9E), 0xAEE1)?;
@@ -1668,12 +1683,6 @@ impl Patcher<'_> {
                     ],
                 )?;
 
-                // Silence the music and make Samus stand up when Mother Brain starts to fade to corpse
-                self.rom.write_n(
-                    snes2pc(0xA9B1BE),
-                    &[0x20, 0x00, 0xFD], // JSR 0xFD00  (must match address in fast_mother_brain_cutscene.asm)
-                )?;
-
                 if self.settings.quality_of_life_settings.escape_movement_items
                     || self
                         .settings
@@ -1685,11 +1694,17 @@ impl Patcher<'_> {
                 }
             }
             MotherBrainFight::Skip => {
-                // Make Mother Brain 1 finish faster:
-                for addr in &[0x897D, 0x89AF, 0x89E1, 0x8A09, 0x8A31, 0x8A63, 0x8A95] {
-                    self.rom.write_u16(snes2pc(0xA90000 + addr), 0x10)?; // cut delay in half for tubes to fall
+                if fast_cutscenes {
+                    // Make Mother Brain 1 finish faster:
+                    // cut delay in half for tubes to fall
+                    for addr in &[0x897D, 0x89AF, 0x89E1, 0x8A09, 0x8A31, 0x8A63, 0x8A95] {
+                        self.rom.write_u16(snes2pc(0xA90000 + addr), 0x10)?;
+                    }
+                    // skip MB moving forward, drooling, exploding
+                    self.rom.write_u16(snes2pc(0xA9AF07), 0xB115)?;
+                    // accelerate fade to gray (which wouldn't have an effect here except for a delay)
+                    self.rom.write_u16(snes2pc(0xA9B19F), 1)?;
                 }
-
                 // Skip MB2 and MB3:
                 self.rom.write_u16(snes2pc(0xA98D80), 0xAEE1)?;
                 self.rom.write_n(
@@ -1701,8 +1716,6 @@ impl Patcher<'_> {
                         0xEA, 0xEA, // nop : nop
                     ],
                 )?;
-                self.rom.write_u16(snes2pc(0xA9AF07), 0xB115)?; // skip MB moving forward, drooling, exploding
-                self.rom.write_u16(snes2pc(0xA9B19F), 1)?; // accelerate fade to gray (which wouldn't have an effect here except for a delay)
 
                 if self.settings.quality_of_life_settings.escape_movement_items
                     || self

@@ -1,6 +1,6 @@
 FB70 - FB91: ; escape_items.asm
 FC00 - FC40: ; escape.asm
-FD00 - FD11: ; fast_mother_brain_cutscene.asm
+FD00 - FD11: ; mb_short_samus_standup.asm
 FD40 - FD94: ; escape_autosave.asm
 FE00 - FF46: ; fix_dust_torizo.asm
 FF50 - FFFF: [FREE]

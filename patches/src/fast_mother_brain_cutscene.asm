@@ -1,5 +1,4 @@
 lorom
-
 ;;; Eliminate delay before Mother Brain rising:
 
 org $A98D73
@@ -64,18 +63,6 @@ mb_phase_2_end_decide:
     STA $0FA8              ;} Mother Brain's body function = $B8EB (firing rainbow beam)
 .done:
     RTS                    ; Return
-warnpc $A9BB1A
+assert pc() <= $A9BB1A
 org $A9BB1A
 .finish_samus:
-
-;; Hook to make Samus stand up before escape (in "Short" Mother Brain fight mode)
-
-org $A9FD00
-    LDA #$0017             ;\ Make Samus stand up
-    JSL $90F084            ;/
-    LDA #$0000             ;\
-    JSL $808FC1            ;/ Queue music stop
-;    LDA #$B173             ; Run hi-jacked instruction
-    LDA #$B1D5
-    RTS
-warnpc $A9FD40
