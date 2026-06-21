@@ -1355,6 +1355,13 @@
             "enabled": true
         },
         {
+            "room_id": 173,
+            "notable_id": 1,
+            "room_name": "Fish Tank",
+            "notable_name": "Top Left Direct Jump",
+            "enabled": true
+        },
+        {
             "room_id": 178,
             "notable_id": 2,
             "room_name": "Mama Turtle Room",
@@ -1748,13 +1755,6 @@
         },
         {
             "room_id": 173,
-            "notable_id": 1,
-            "room_name": "Fish Tank",
-            "notable_name": "Top Left Direct Jump",
-            "enabled": false
-        },
-        {
-            "room_id": 173,
             "notable_id": 4,
             "room_name": "Fish Tank",
             "notable_name": "Room Entry Fall onto Frozen Fish",
@@ -2017,13 +2017,6 @@
             "notable_id": 4,
             "room_name": "Big Pink",
             "notable_name": "Fast Mockball Leave With Spark",
-            "enabled": false
-        },
-        {
-            "room_id": 58,
-            "notable_id": 2,
-            "room_name": "Dachora Room",
-            "notable_name": "Tankless Bootless Shinespark",
             "enabled": false
         },
         {
@@ -2493,6 +2486,13 @@
             "notable_id": 9,
             "room_name": "Big Pink",
             "notable_name": "Zeb Ice Clip",
+            "enabled": false
+        },
+        {
+            "room_id": 58,
+            "notable_id": 2,
+            "room_name": "Dachora Room",
+            "notable_name": "Tankless Bootless Shinespark",
             "enabled": false
         },
         {

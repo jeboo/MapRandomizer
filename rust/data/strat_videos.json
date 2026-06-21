@@ -7857,6 +7857,14 @@
   },
   {
     "room_id": 41,
+    "strat_id": 77,
+    "video_id": 10480,
+    "created_user": "Sam",
+    "note": "Bombs",
+    "dev_note": ""
+  },
+  {
+    "room_id": 41,
     "strat_id": 44,
     "video_id": 2828,
     "created_user": "Sam",
@@ -9353,6 +9361,14 @@
   },
   {
     "room_id": 51,
+    "strat_id": 128,
+    "video_id": 10246,
+    "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
     "strat_id": 17,
     "video_id": 1248,
     "created_user": "maddo",
@@ -9537,6 +9553,14 @@
   },
   {
     "room_id": 51,
+    "strat_id": 129,
+    "video_id": 10245,
+    "created_user": "nn",
+    "note": "Precise Ice Clip",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
     "strat_id": 32,
     "video_id": 9944,
     "created_user": "Sam",
@@ -9588,6 +9612,14 @@
     "strat_id": 122,
     "video_id": 9963,
     "created_user": "nn",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
+    "strat_id": 130,
+    "video_id": 9945,
+    "created_user": "Sam",
     "note": "",
     "dev_note": ""
   },
@@ -15890,6 +15922,14 @@
   {
     "room_id": 70,
     "strat_id": 52,
+    "video_id": 10534,
+    "created_user": "Sam",
+    "note": "With Super",
+    "dev_note": ""
+  },
+  {
+    "room_id": 70,
+    "strat_id": 52,
     "video_id": 9372,
     "created_user": "nn",
     "note": "Yapping Maw Alive",
@@ -15901,6 +15941,14 @@
     "video_id": 9419,
     "created_user": "nn",
     "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 70,
+    "strat_id": 53,
+    "video_id": 10531,
+    "created_user": "Sam",
+    "note": "Yapping Maw Dead",
     "dev_note": ""
   },
   {
@@ -16045,6 +16093,22 @@
     "video_id": 2339,
     "created_user": "Sam",
     "note": "Leave with spark",
+    "dev_note": ""
+  },
+  {
+    "room_id": 70,
+    "strat_id": 55,
+    "video_id": 10532,
+    "created_user": "Sam",
+    "note": "With Super",
+    "dev_note": ""
+  },
+  {
+    "room_id": 70,
+    "strat_id": 55,
+    "video_id": 10533,
+    "created_user": "Sam",
+    "note": "With Super",
     "dev_note": ""
   },
   {
@@ -18294,6 +18358,14 @@
     "created_user": "nn",
     "note": "",
     "dev_note": "frame perfect x-mode"
+  },
+  {
+    "room_id": 69,
+    "strat_id": 31,
+    "video_id": 10530,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
   },
   {
     "room_id": 69,
@@ -37737,6 +37809,22 @@
   },
   {
     "room_id": 144,
+    "strat_id": 93,
+    "video_id": 9278,
+    "created_user": "nn",
+    "note": "Flash Suit, Precise Ice Clip",
+    "dev_note": ""
+  },
+  {
+    "room_id": 144,
+    "strat_id": 93,
+    "video_id": 9300,
+    "created_user": "nn",
+    "note": "Bombs, X-Ray Ice Clip",
+    "dev_note": ""
+  },
+  {
+    "room_id": 144,
     "strat_id": 81,
     "video_id": 3847,
     "created_user": "Nito",
@@ -52049,6 +52137,14 @@
   },
   {
     "room_id": 186,
+    "strat_id": 125,
+    "video_id": 9418,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 186,
     "strat_id": 126,
     "video_id": 7042,
     "created_user": "Sam",
@@ -52649,10 +52745,26 @@
   },
   {
     "room_id": 185,
+    "strat_id": 46,
+    "video_id": 7087,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": "FIXME, Add to note: There is a way to get the correct pixel by jumping against the wall tap backward to face right then aim down and pressing left."
+  },
+  {
+    "room_id": 185,
     "strat_id": 47,
     "video_id": 10258,
     "created_user": "Osse101",
     "note": "Mid fight gate glitching",
+    "dev_note": ""
+  },
+  {
+    "room_id": 185,
+    "strat_id": 47,
+    "video_id": 7016,
+    "created_user": "Sam",
+    "note": "No Lenience (never expected)",
     "dev_note": ""
   },
   {
@@ -63342,6 +63454,14 @@
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
+  },
+  {
+    "room_id": 232,
+    "strat_id": 38,
+    "video_id": 7419,
+    "created_user": "Sam",
+    "note": "With Flash Suit",
+    "dev_note": "FIXME, Add Info to strat: Trigger a wind-up animation while getting drained by the Baby Metroid with an HP value between 31 and 11 HP to get a Blue Suit."
   },
   {
     "room_id": 232,

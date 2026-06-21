@@ -836,7 +836,7 @@
     "room_name": "Dachora Room",
     "notable_id": 2,
     "name": "Tankless Bootless Shinespark",
-    "difficulty": "Expert",
+    "difficulty": "Expert+",
     "video_id": 408
   },
   {
@@ -2156,7 +2156,7 @@
     "room_name": "Fish Tank",
     "notable_id": 1,
     "name": "Top Left Direct Jump",
-    "difficulty": "Very Hard",
+    "difficulty": "Hard",
     "video_id": 679
   },
   {
