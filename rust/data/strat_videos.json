@@ -24937,6 +24937,38 @@
   },
   {
     "room_id": 112,
+    "strat_id": 83,
+    "video_id": 9696,
+    "created_user": "maddo",
+    "note": "5 spike hits",
+    "dev_note": ""
+  },
+  {
+    "room_id": 112,
+    "strat_id": 83,
+    "video_id": 9697,
+    "created_user": "maddo",
+    "note": "Double Suit, 5 spike hits",
+    "dev_note": ""
+  },
+  {
+    "room_id": 112,
+    "strat_id": 84,
+    "video_id": 9694,
+    "created_user": "maddo",
+    "note": "Suitless, 6 spike hits",
+    "dev_note": ""
+  },
+  {
+    "room_id": 112,
+    "strat_id": 84,
+    "video_id": 9695,
+    "created_user": "maddo",
+    "note": "Varia, 6 spike hits",
+    "dev_note": ""
+  },
+  {
+    "room_id": 112,
     "strat_id": 17,
     "video_id": 7756,
     "created_user": "Sam",
@@ -64326,6 +64358,22 @@
     "created_user": "Sam",
     "note": "With Flash Suit",
     "dev_note": "FIXME, Add Info to strat: Trigger a wind-up animation while getting drained by the Baby Metroid with an HP value between 31 and 11 HP to get a Blue Suit."
+  },
+  {
+    "room_id": 232,
+    "strat_id": 38,
+    "video_id": 8576,
+    "created_user": "maddo",
+    "note": "Stutter shinecharge with 4 tanks suitless",
+    "dev_note": ""
+  },
+  {
+    "room_id": 232,
+    "strat_id": 38,
+    "video_id": 10449,
+    "created_user": "lusername_not_available",
+    "note": "With baby hug slowdown",
+    "dev_note": ""
   },
   {
     "room_id": 232,

@@ -3577,6 +3577,13 @@
                 "enabled": false
             },
             {
+                "room_id": 232,
+                "notable_id": 3,
+                "room_name": "Big Boy Room",
+                "notable_name": "Baby Drain Spark Interrupt",
+                "enabled": false
+            },
+            {
                 "room_id": 238,
                 "notable_id": 3,
                 "room_name": "Mother Brain Room",
@@ -3707,6 +3714,13 @@
                 "notable_id": 9,
                 "room_name": "Lava Dive Room",
                 "notable_name": "Artificial Morph, Triple Spring Ball Jump",
+                "enabled": false
+            },
+            {
+                "room_id": 112,
+                "notable_id": 4,
+                "room_name": "Lava Grapple Tunnel",
+                "notable_name": "Blue Suit Rapid Suitless Damage Boosts",
                 "enabled": false
             },
             {

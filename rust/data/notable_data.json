@@ -1324,7 +1324,7 @@
     "room_name": "Lava Grapple Tunnel",
     "notable_id": 4,
     "name": "Blue Suit Rapid Suitless Damage Boosts",
-    "difficulty": "Ignored",
+    "difficulty": "Insane",
     "video_id": 9701
   },
   {
@@ -3420,8 +3420,8 @@
     "room_name": "Big Boy Room",
     "notable_id": 3,
     "name": "Baby Drain Spark Interrupt",
-    "difficulty": "Ignored",
-    "video_id": null
+    "difficulty": "Extreme+",
+    "video_id": 8576
   },
   {
     "room_id": 226,
