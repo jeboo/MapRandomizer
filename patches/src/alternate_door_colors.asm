@@ -1,3 +1,6 @@
+arch snes.cpu
+lorom
+
 !bank_82_free_space_start = $82FA00
 !bank_82_free_space_end = $82FA80
 
@@ -14,7 +17,7 @@
 org $82E7D0
     jmp hook_load_tileset
 
-org $82E4A5
+org $82E65D
     jsr hook_door_transition
 
 org $828D2C
@@ -28,8 +31,8 @@ hook_load_tileset:
     rtl
 
 hook_door_transition:
-    sta $099C
     jsr update_palette
+    lda #$E664
     rts
 
 hook_pause:
@@ -75,4 +78,4 @@ update_palette:
     plb
     rts
 
-warnpc !bank_82_free_space_end
+assert pc() <= !bank_82_free_space_end
