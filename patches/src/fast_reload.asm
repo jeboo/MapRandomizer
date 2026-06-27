@@ -1,7 +1,7 @@
 ; Fast reload on death
 ; Based on patch by total: https://metroidconstruction.com/resource.php?id=421
 ; Compile with "asar" (https://github.com/RPGHacker/asar/releases)
-
+arch 65816
 
 !deathhook82 = $82DDC7 ;$82 used for death hook (game state $19)
 
@@ -140,6 +140,15 @@ hook_main:
     and !reload_button_combo   ; L + R + Select + Start
     bne .reset   ; Reset only if at least one of the inputs is newly pressed
 .noreset
+    cmp #$2070   ; L + R + Select + X
+    bne .nosavestate
+    jsl $85c000  ; save state
+    bra .noloadstate
+.nosavestate
+    cmp #$6030   ; L + R + Select + Y
+    bne .noloadstate
+    jsl $85c003  ; load state
+.noloadstate
     plp
     rtl
 .reset:

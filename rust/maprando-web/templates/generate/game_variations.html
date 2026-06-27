@@ -133,6 +133,19 @@
         <label class="btn btn-outline-primary" for="raceModeYes">Yes</label>
     </div>
 </div>
+<div class="form-group row" onchange="gameVariationChanged()">
+    <div class="col-lg-4 col-md-6 my-2">
+        {% include "help/savestate.html" %}
+        <label for="savestate_mode">Enable savestates</label>
+    </div>
+    <div id="saveStateMode" class="col-md-2 btn-group my-2" role="group">
+        <input type="radio" class="btn-check" name="savestate_mode" id="saveStateModeNo" value="false" checked>
+        <label class="btn btn-outline-primary" for="saveStateModeNo">No</label>
+        <input type="radio" class="btn-check" name="savestate_mode" id="saveStateModeYes" value="true">
+        <label class="btn btn-outline-primary" for="saveStateModeYes">Yes</label>
+    </div>
+</div>
+
 <div class="form-group row">
     <div class="col-lg-4 col-md-6 my-2">
         {% include "help/seed.html" %}

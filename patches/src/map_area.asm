@@ -420,7 +420,7 @@ load_bg3_map_tilemap_wrapper:
 
 assert pc() <= $85A290
 org $85A290
-; must match the reference in fix_kraid_hud.asm
+; must match the reference in fix_kraid_hud.asm, savestate.asm
 load_bg3_map_tiles_wrapper:
     jsr load_bg3_map_tiles
     rtl

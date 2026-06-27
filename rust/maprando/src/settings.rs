@@ -654,6 +654,7 @@ pub struct OtherSettings {
     pub enable_major_glitches: bool,
     pub speed_booster: SpeedBooster,
     pub race_mode: bool,
+    pub savestate_mode: bool,
     pub random_seed: Option<usize>,
 }
 
@@ -1483,6 +1484,12 @@ fn upgrade_other_settings(settings: &mut serde_json::Value) -> Result<()> {
         || other_settings["all_enemies_respawn"].as_bool().is_none()
     {
         other_settings.insert("all_enemies_respawn".to_string(), false.into());
+    }
+
+    if other_settings.get("savestate_mode").is_none()
+        || other_settings["savestate_mode"].as_bool().is_none()
+    {
+        other_settings.insert("savestate_mode".to_string(), false.into());
     }
 
     if other_settings.get("disable_spikesuit").is_none()

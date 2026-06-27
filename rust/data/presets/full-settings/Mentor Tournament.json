@@ -4873,6 +4873,7 @@
         "energy_free_shinesparks": false,
         "all_enemies_respawn": false,
         "race_mode": true,
+        "savestate_mode": false,
         "random_seed": null,
         "disable_spikesuit": false,
         "disable_bluesuit": false,

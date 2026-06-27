@@ -368,6 +368,7 @@ function buildSettingsObject() {
             "energy_free_shinesparks": formData.get("energy_free_shinesparks") == "true",
             "all_enemies_respawn": formData.get("all_enemies_respawn") == "true",
             "race_mode": formData.get("race_mode") == "true",
+            "savestate_mode": formData.get("savestate_mode") == "true",
             "random_seed": tryParseInt(formData.get("random_seed")),
             "disable_spikesuit": formData.get("disable_spike_suit") == "true",
             "disable_bluesuit": formData.get("disable_blue_suit") == "true",
@@ -687,6 +688,7 @@ function applyFullSettingsPreset(preset) {
     applyRadioValue("enableMajorGlitches", other.enable_major_glitches);
     applyRadioValue("speedBooster", other.speed_booster);
     applyRadioValue("raceMode", other.race_mode);
+    applyRadioValue("saveStateMode", other.savestate_mode);
     document.getElementById("randomSeed").value = other.random_seed;
 }
 
@@ -1416,6 +1418,7 @@ function checkOtherOptions() {
         document.getElementById("speedBoosterSplit").checked ||
         !document.getElementById("areaAssignmentPresetStandard").checked ||
         document.getElementById("doorLocksSizeSmall").checked ||
+        document.getElementById("saveStateModeYes").checked ||
         document.getElementById("raceModeYes").checked) 
     {
         document.getElementById("collapseGameVariations").classList.remove("collapse");

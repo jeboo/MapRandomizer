@@ -657,6 +657,10 @@ impl Patcher<'_> {
             patches.push("everything_respawns");
         }
 
+        if self.settings.other_settings.savestate_mode {
+            patches.push("savestate");
+        }
+
         if self.settings.other_settings.disable_spikesuit {
             patches.push("remove_spikesuit");
         }
