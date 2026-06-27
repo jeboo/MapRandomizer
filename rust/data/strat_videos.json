@@ -9553,6 +9553,14 @@
   },
   {
     "room_id": 51,
+    "strat_id": 125,
+    "video_id": 6791,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
     "strat_id": 9,
     "video_id": 3493,
     "created_user": "Sam",
@@ -9587,6 +9595,14 @@
     "room_id": 51,
     "strat_id": 127,
     "video_id": 10314,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 51,
+    "strat_id": 128,
+    "video_id": 6790,
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
@@ -12045,6 +12061,14 @@
     "video_id": 7085,
     "created_user": "maddo",
     "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 54,
+    "strat_id": 88,
+    "video_id": 6692,
+    "created_user": "Sam",
+    "note": "Hi-Jump",
     "dev_note": ""
   },
   {
@@ -16997,6 +17021,14 @@
     "video_id": 4135,
     "created_user": "maddo",
     "note": "From Post Crocomire Farm Room",
+    "dev_note": ""
+  },
+  {
+    "room_id": 75,
+    "strat_id": 106,
+    "video_id": 6905,
+    "created_user": "Sam",
+    "note": "",
     "dev_note": ""
   },
   {
@@ -31233,6 +31265,14 @@
   },
   {
     "room_id": 122,
+    "strat_id": 58,
+    "video_id": 6704,
+    "created_user": "Sam",
+    "note": "Speedball",
+    "dev_note": ""
+  },
+  {
+    "room_id": 122,
     "strat_id": 5,
     "video_id": 6195,
     "created_user": "Sam",
@@ -41285,6 +41325,14 @@
     "video_id": 6780,
     "created_user": "maddo",
     "note": "Normalized speed $2.0",
+    "dev_note": ""
+  },
+  {
+    "room_id": 156,
+    "strat_id": 58,
+    "video_id": 6766,
+    "created_user": "Sam",
+    "note": "Power Off, Workbot Clip",
     "dev_note": ""
   },
   {
@@ -52944,6 +52992,14 @@
     "dev_note": ""
   },
   {
+    "room_id": 186,
+    "strat_id": 55,
+    "video_id": 7340,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
     "room_id": 184,
     "strat_id": 1,
     "video_id": 2176,
@@ -54605,6 +54661,14 @@
     "video_id": 5297,
     "created_user": "maddo",
     "note": "From Warehouse Entrance (height 1)",
+    "dev_note": ""
+  },
+  {
+    "room_id": 175,
+    "strat_id": 92,
+    "video_id": 6960,
+    "created_user": "kyleb",
+    "note": "TAS Recording",
     "dev_note": ""
   },
   {
@@ -61337,6 +61401,30 @@
   },
   {
     "room_id": 181,
+    "strat_id": 29,
+    "video_id": 6820,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 181,
+    "strat_id": 30,
+    "video_id": 6821,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 181,
+    "strat_id": 30,
+    "video_id": 6822,
+    "created_user": "Sam",
+    "note": "Spinjump Variant",
+    "dev_note": ""
+  },
+  {
+    "room_id": 181,
     "strat_id": 14,
     "video_id": 3152,
     "created_user": "Sam",
@@ -62163,6 +62251,14 @@
     "room_id": 210,
     "strat_id": 70,
     "video_id": 4589,
+    "created_user": "Sam",
+    "note": "",
+    "dev_note": ""
+  },
+  {
+    "room_id": 210,
+    "strat_id": 70,
+    "video_id": 6774,
     "created_user": "Sam",
     "note": "",
     "dev_note": ""
