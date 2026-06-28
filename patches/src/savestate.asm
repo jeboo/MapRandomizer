@@ -6,7 +6,7 @@ arch 65816
 lorom
 
 org $80ffd8
-    db 8            ; 256KB SRAM (ensure patch applied after map_area)
+    db 8            ; 256KB SRAM (ensure patch applied after map_progress_maintain)
 
 !bank_85_free_space_start = $85c000
 !bank_85_free_space_end = $85c400
@@ -136,7 +136,7 @@ post_load_music:
     ; Makes the game check Samus' health again, to see if we need annoying sound
     STZ !SAMUS_HEALTH_WARNING
     ; see if no_beeping.asm applied
-    LDA $90EA92 : CMP #$EAEA : BNE .done_health_alarm
+    LDA $90EA92 : CMP #$EAEA : BEQ .done_health_alarm
     LDA #$0002 : JSL $80914D
   
   .done_health_alarm
@@ -288,10 +288,10 @@ save_write_table:
     %vram_to_sram($0000, $8000, $750000)
     %vram_to_sram($8000, $8000, $760000)
 
-    ; Copy CGRAM, uses SRAM $772000-$7721FF
+    ; Copy CGRAM, uses SRAM $770000-$7701FF
     dw $1000|$2121, $00    ; CGRAM address
     dw $0000|$4310, $3B80  ; direction = B->A, byte reg, B addr = $213B
-    dw $0000|$4312, $2000  ; A addr = $xx2000
+    dw $0000|$4312, $0000  ; A addr = $xx0000
     dw $0000|$4314, $0077  ; A addr = $77xxxx, size = $xx00
     dw $0000|$4316, $0002  ; size = $02xx ($0200), unused bank reg = $00.
     dw $1000|$420B, $02    ; Trigger DMA on channel 1
@@ -346,10 +346,10 @@ load_write_table:
     %sram_to_vram($0000, $8000, $750000)
     %sram_to_vram($8000, $8000, $760000)
 
-    ; Copy CGRAM, uses SRAM $772000-$7721FF
+    ; Copy CGRAM, uses SRAM $770000-$7701FF
     dw $1000|$2121, $00    ; CGRAM address
     dw $0000|$4310, $2200  ; direction = A->B, byte reg, B addr = $2122
-    dw $0000|$4312, $2000  ; A addr = $xx2000
+    dw $0000|$4312, $2000  ; A addr = $xx0000
     dw $0000|$4314, $0077  ; A addr = $77xxxx, size = $xx00
     dw $0000|$4316, $0002  ; size = $02xx ($0200), unused bank reg = $00.
     dw $1000|$420B, $02    ; Trigger DMA on channel 1
