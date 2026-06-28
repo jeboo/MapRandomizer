@@ -660,6 +660,10 @@ impl Patcher<'_> {
         if self.settings.other_settings.savestate_mode {
             patches.push("savestate");
         }
+        else {
+            self.rom.write_u8(snes2pc(0x85C000), 0x6B)?; // RTL
+            self.rom.write_u8(snes2pc(0x85C003), 0x6B)?; // RTL
+        }
 
         if self.settings.other_settings.disable_spikesuit {
             patches.push("remove_spikesuit");
