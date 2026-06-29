@@ -35,6 +35,8 @@ org $80ffd8
 !SRAM_MUSIC_DATA = $707F02
 !SRAM_MUSIC_TRACK = $707F04
 !SRAM_SOUND_TIMER = $707F06
+!SRAM_SAVESTATE_SAVES = $707F08
+!SRAM_SAVESTATE_LOADS = $707F0A
 !SRAM_DMA_BANK = $707F80
 !MUSIC_ROUTINE = $808FC1
 
@@ -108,6 +110,12 @@ org !bank_85_free_space_start
 ; Both A and X/Y are 16-bit here
 pre_load_state:
 {
+    ; If sounds are not enabled, the game won't clear the sounds
+    LDA !DISABLE_SOUNDS : PHA
+    STZ !DISABLE_SOUNDS
+    JSL $82BE17 ; Cancel sound effects
+    PLA : STA !DISABLE_SOUNDS
+    
     LDA !MUSIC_DATA : STA !SRAM_MUSIC_DATA
     LDA !MUSIC_TRACK : STA !SRAM_MUSIC_TRACK
     LDA !SOUND_TIMER : STA !SRAM_SOUND_TIMER
@@ -126,20 +134,6 @@ post_load_state:
 
 post_load_music:
 {
-;    JSL stop_all_sounds
-    ; If sounds are not enabled, the game won't clear the sounds
-    LDA !DISABLE_SOUNDS : PHA
-    STZ !DISABLE_SOUNDS
-    JSL $82BE17 ; Cancel sound effects
-    PLA : STA !DISABLE_SOUNDS
-
-    ; Makes the game check Samus' health again, to see if we need annoying sound
-    STZ !SAMUS_HEALTH_WARNING
-    ; see if no_beeping.asm applied
-    LDA $90EA92 : CMP #$EAEA : BEQ .done_health_alarm
-    LDA #$0002 : JSL $80914D
-  
-  .done_health_alarm
     LDY !MUSIC_TRACK
     LDA !MUSIC_QUEUE_NEXT : CMP !MUSIC_QUEUE_START : BEQ .music_queue_empty
 
@@ -256,6 +250,9 @@ save_state:
     BRA .save_dma_regs
 
   .done
+    ; inc counter
+    LDA !SRAM_SAVESTATE_SAVES : INC : STA !SRAM_SAVESTATE_SAVES
+
     %ai16()
     LDX #save_write_table
     ; fallthrough to run_vm
@@ -314,6 +311,9 @@ save_return:
 
 load_state:
 {
+    LDA !SRAM_SAVESTATE_SAVES : BNE .save_exists : RTL
+
+.save_exists
     JSR pre_load_state
 
     %a8()
@@ -389,6 +389,10 @@ load_return:
     %ai16()
     PLB
     JSR post_load_state
+    
+    ; inc counter
+    LDA !SRAM_SAVESTATE_LOADS : INC : STA !SRAM_SAVESTATE_LOADS
+    
     JMP register_restore_return
 }
 

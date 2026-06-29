@@ -62,25 +62,25 @@ org $85811E
 
 org !bank_85_free_space_start
 SupportedStates:
-    dw #$0007  ; Main gameplay fading in
-    dw #$0008  ; Main gameplay
-    dw #$0009  ; Hit a door block
-    dw #$000a  ; Loading next room
-    dw #$000b  ; Loading next room
-    dw #$000c  ; Pausing, normal gameplay but darkening
-    dw #$000d  ; Pausing, loading pause menu
-    dw #$000e  ; Paused, loading pause menu
-    dw #$000f  ; Paused, objective/map/equipment screens
-    dw #$0012  ; Unpausing, normal gameplay but brightening
-    dw #$0013  ; Death sequence, start
-    dw #$0014  ; Death sequence, black out surroundings
-    dw #$0015  ; Death sequence, wait for music
-    dw #$0016  ; Death sequence, pre-flashing
-    dw #$0017  ; Death sequence, flashing
-    dw #$0018  ; Death sequence, explosion white out
-    dw #$001b  ; Reserve tanks auto.
-    dw #$0027  ; Ending and credits. Cinematic. (reboot only)
-    dw #$ffff
+    dw $0007  ; Main gameplay fading in
+    dw $0008  ; Main gameplay
+    dw $0009  ; Hit a door block
+    dw $000a  ; Loading next room
+    dw $000b  ; Loading next room
+    dw $000c  ; Pausing, normal gameplay but darkening
+    dw $000d  ; Pausing, loading pause menu
+    dw $000e  ; Paused, loading pause menu
+    dw $000f  ; Paused, objective/map/equipment screens
+    dw $0012  ; Unpausing, normal gameplay but brightening
+    dw $0013  ; Death sequence, start
+    dw $0014  ; Death sequence, black out surroundings
+    dw $0015  ; Death sequence, wait for music
+    dw $0016  ; Death sequence, pre-flashing
+    dw $0017  ; Death sequence, flashing
+    dw $0018  ; Death sequence, explosion white out
+    dw $001b  ; Reserve tanks auto.
+    dw $0027  ; Ending and credits. Cinematic. (reboot only)
+    dw $ffff
 
 hook_main:
     jsl $808338  ; run hi-jacked instruction

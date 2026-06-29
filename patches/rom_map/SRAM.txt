@@ -32,5 +32,6 @@ $704400-704800: (reserved in case we expand the temporary tileset graphics)
 $703000-707400: backup of RAM $7E5000-$7E5400 and $7E7000-$7EB000, used only during unpause (decompression.asm)
 $707400-707800: room map tile graphics (map_area.asm)
 $707800-707F00: room name map tiles, used only during pause menu (map_area.asm/pause_menu_objectives.asm)
-$707F00-708A00: [FREE]
+$707F00-707F0A: savestate.asm
+708A00: [FREE]
 $710000-770200: savestate.asm

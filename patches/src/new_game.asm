@@ -188,6 +188,11 @@ startup:
     sta $702700, X
     txa
     bne .copy_revealed
+    
+    ; Initialize SRAM savestate counters
+    lda #$0000
+    sta $707F08 ; saves
+    sta $707F0A ; loads
 
 .skip_init:
 
