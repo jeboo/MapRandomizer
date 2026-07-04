@@ -123,6 +123,8 @@ pub struct ControllerConfig {
     pub angle_down: ControllerButton,
     pub spin_lock_buttons: Vec<ControllerButton>,
     pub quick_reload_buttons: Vec<ControllerButton>,
+    pub save_state_buttons: Vec<ControllerButton>,
+    pub load_state_buttons: Vec<ControllerButton>,
     pub moonwalk: bool,
 }
 
@@ -369,6 +371,12 @@ fn apply_controller_config(rom: &mut Rom, controller_config: &ControllerConfig) 
         let mask = get_button_mask(button, default);
         rom.write_u16(snes2pc(addr), mask)?;
     }
+
+    let save_state_mask = get_button_list_mask(&controller_config.save_state_buttons);
+    rom.write_u16(snes2pc(0x82FE78), save_state_mask)?;
+
+    let load_state_mask = get_button_list_mask(&controller_config.load_state_buttons);
+    rom.write_u16(snes2pc(0x82FE7A), load_state_mask)?;
 
     let spin_lock_mask = get_button_list_mask(&controller_config.spin_lock_buttons);
     rom.write_u16(snes2pc(0x82FE7C), spin_lock_mask)?;

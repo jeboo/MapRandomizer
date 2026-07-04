@@ -13,6 +13,8 @@ arch 65816
 !bank_85_free_space_start = $859880
 !bank_85_free_space_end = $859980
 
+!savestate_button_combo = $82FE78  ; This should be inside free space, and also consistent with reference in customize.rs
+!loadstate_button_combo = $82FE7A   ; This should be inside free space, and also consistent with reference in customize.rs
 !spin_lock_button_combo = $82FE7C   ; This should be inside free space, and also consistent with reference in customize.rs
 !reload_button_combo = $82FE7E   ; This should be inside free space, and also consistent with reference in customize.rs
 !freespacea0 = $a0fe00 ;$A0 used for instant save reload
@@ -140,15 +142,17 @@ hook_main:
     and !reload_button_combo   ; L + R + Select + Start
     bne .reset   ; Reset only if at least one of the inputs is newly pressed
 .noreset
-    cmp #$2070   ; L + R + Select + X
+    lda $8B
+    cmp !savestate_button_combo
     bne .nosavestate
     jsl $85c000  ; save state
-    bra .noloadstate
+    bra .btn_leave
 .nosavestate
-    cmp #$6030   ; L + R + Select + Y
-    bne .noloadstate
+    lda $8B
+    cmp !loadstate_button_combo
+    bne .btn_leave
     jsl $85c003  ; load state
-.noloadstate
+.btn_leave
     plp
     rtl
 .reset:

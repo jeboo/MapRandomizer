@@ -363,9 +363,11 @@ load_return:
     PLB
     LDA !SRAM_SAVED_SP : TCS
     
-    ; rewrite inputs so that holding load won't keep loading
+    ; clear inputs
     TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
-    ; DEC : STA !IH_CONTROLLER_PRI_NEW  : STA !IH_CONTROLLER_SEC_NEW
+    ; rewrite inputs so that holding load won't keep loading
+    ; TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_SEC
+    ; DEC : STA !IH_CONTROLLER_PRI_NEW : STA !IH_CONTROLLER_SEC_NEW
     ; STA !IH_CONTROLLER_PRI_PREV : STA !IH_CONTROLLER_SEC_PREV
 
     ; clear frame held counters

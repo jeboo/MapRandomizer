@@ -216,6 +216,30 @@ struct CustomizeRequest {
     quick_reload_r: Option<Text<String>>,
     quick_reload_select: Option<Text<String>>,
     quick_reload_start: Option<Text<String>>,
+    save_state_left: Option<Text<String>>,
+    save_state_right: Option<Text<String>>,
+    save_state_up: Option<Text<String>>,
+    save_state_down: Option<Text<String>>,
+    save_state_x: Option<Text<String>>,
+    save_state_y: Option<Text<String>>,
+    save_state_a: Option<Text<String>>,
+    save_state_b: Option<Text<String>>,
+    save_state_l: Option<Text<String>>,
+    save_state_r: Option<Text<String>>,
+    save_state_select: Option<Text<String>>,
+    save_state_start: Option<Text<String>>,
+    load_state_left: Option<Text<String>>,
+    load_state_right: Option<Text<String>>,
+    load_state_up: Option<Text<String>>,
+    load_state_down: Option<Text<String>>,
+    load_state_x: Option<Text<String>>,
+    load_state_y: Option<Text<String>>,
+    load_state_a: Option<Text<String>>,
+    load_state_b: Option<Text<String>>,
+    load_state_l: Option<Text<String>>,
+    load_state_r: Option<Text<String>>,
+    load_state_select: Option<Text<String>>,
+    load_state_start: Option<Text<String>>,
     moonwalk: Text<bool>,
 }
 
@@ -366,6 +390,8 @@ async fn customize_seed(
             angle_down: parse_controller_button(&req.control_angle_down.0).unwrap(),
             spin_lock_buttons: get_spin_lock_buttons(&req),
             quick_reload_buttons: get_quick_reload_buttons(&req),
+            save_state_buttons: get_save_state_buttons(&req),
+            load_state_buttons: get_load_state_buttons(&req),
             moonwalk: req.moonwalk.0,
         },
     };
@@ -459,6 +485,60 @@ fn get_quick_reload_buttons(req: &CustomizeRequest) -> Vec<ControllerButton> {
         }
     }
     quick_reload_buttons
+}
+
+fn get_save_state_buttons(req: &CustomizeRequest) -> Vec<ControllerButton> {
+    let mut save_state_buttons = vec![];
+    let setting_button_mapping = vec![
+        (&req.save_state_left, ControllerButton::Left),
+        (&req.save_state_right, ControllerButton::Right),
+        (&req.save_state_up, ControllerButton::Up),
+        (&req.save_state_down, ControllerButton::Down),
+        (&req.save_state_a, ControllerButton::A),
+        (&req.save_state_b, ControllerButton::B),
+        (&req.save_state_x, ControllerButton::X),
+        (&req.save_state_y, ControllerButton::Y),
+        (&req.save_state_l, ControllerButton::L),
+        (&req.save_state_r, ControllerButton::R),
+        (&req.save_state_select, ControllerButton::Select),
+        (&req.save_state_start, ControllerButton::Start),
+    ];
+
+    for (setting, button) in setting_button_mapping {
+        if let Some(x) = setting
+            && x.0 == "on"
+        {
+            save_state_buttons.push(button);
+        }
+    }
+    save_state_buttons
+}
+
+fn get_load_state_buttons(req: &CustomizeRequest) -> Vec<ControllerButton> {
+    let mut load_state_buttons = vec![];
+    let setting_button_mapping = vec![
+        (&req.load_state_left, ControllerButton::Left),
+        (&req.load_state_right, ControllerButton::Right),
+        (&req.load_state_up, ControllerButton::Up),
+        (&req.load_state_down, ControllerButton::Down),
+        (&req.load_state_a, ControllerButton::A),
+        (&req.load_state_b, ControllerButton::B),
+        (&req.load_state_x, ControllerButton::X),
+        (&req.load_state_y, ControllerButton::Y),
+        (&req.load_state_l, ControllerButton::L),
+        (&req.load_state_r, ControllerButton::R),
+        (&req.load_state_select, ControllerButton::Select),
+        (&req.load_state_start, ControllerButton::Start),
+    ];
+
+    for (setting, button) in setting_button_mapping {
+        if let Some(x) = setting
+            && x.0 == "on"
+        {
+            load_state_buttons.push(button);
+        }
+    }
+    load_state_buttons
 }
 
 #[derive(Template)]

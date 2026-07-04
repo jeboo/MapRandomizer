@@ -59,15 +59,51 @@
         <label for="preset">Spin lock</label>
     </div>
     <div class="col-md-9 btn-group p-0" style="overflow-x: auto" role="group">
-        {% for (button, button_display) in all_buttons %}
+        {% for (button, button_display) in all_buttons.iter() %}
             {% let checked %}{% if ["L", "R", "Up", "X"].contains(button) %}{% let checked = "checked" %}{% else %}{% let checked = "" %}{% endif %}
             <input type="checkbox" class="btn-check" id="spinLock{{+ button }}" name="spin_lock_{{+ button.to_lowercase() }}" {{+ checked }}>
-            {% if button == "X" %}
+            {% if button == &"X" %}
             <label class="btn btn-outline-primary me-1" for="spinLock{{+ button }}">{{+ button_display }}</label>
-            {% else if button == "Right" %}
+            {% else if button == &"Right" %}
             <label class="btn btn-outline-primary ms-1" for="spinLock{{+ button }}">{{+ button_display }}</label>
             {% else %}
             <label class="btn btn-outline-primary mx-1" for="spinLock{{+ button }}">{{+ button_display }}</label>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row mx-2 my-3">
+    <div class="col-md-3 col-lg-2 col-form-label">
+        <label for="preset">Save state</label>
+    </div>
+    <div class="col-md-9 btn-group p-0" style="overflow-x: auto" role="group">
+        {% for (button, button_display) in all_buttons.iter() %}
+            {% let checked %}{% if ["L", "R", "Select", "X"].contains(button) %}{% let checked = "checked" %}{% else %}{% let checked = "" %}{% endif %}
+            <input type="checkbox" class="btn-check" id="saveState{{+ button }}" name="save_state_{{+ button.to_lowercase() }}" {{+ checked }}>
+            {% if button == &"X" %}
+            <label class="btn btn-outline-primary me-1" for="saveState{{+ button }}">{{+ button_display }}</label>
+            {% else if button == &"Right" %}
+            <label class="btn btn-outline-primary ms-1" for="saveState{{+ button }}">{{+ button_display }}</label>
+            {% else %}
+            <label class="btn btn-outline-primary mx-1" for="saveState{{+ button }}">{{+ button_display }}</label>
+            {% endif %}
+        {% endfor %}
+    </div>
+</div>
+<div class="form-group row mx-2 my-3">
+    <div class="col-md-3 col-lg-2 col-form-label">
+        <label for="preset">Load state</label>
+    </div>
+    <div class="col-md-9 btn-group p-0" style="overflow-x: auto" role="group">
+        {% for (button, button_display) in all_buttons.iter() %}
+            {% let checked %}{% if ["L", "R", "Select", "Y"].contains(button) %}{% let checked = "checked" %}{% else %}{% let checked = "" %}{% endif %}
+            <input type="checkbox" class="btn-check" id="loadState{{+ button }}" name="load_state_{{+ button.to_lowercase() }}" {{+ checked }}>
+            {% if button == &"X" %}
+            <label class="btn btn-outline-primary me-1" for="loadState{{+ button }}">{{+ button_display }}</label>
+            {% else if button == &"Right" %}
+            <label class="btn btn-outline-primary ms-1" for="loadState{{+ button }}">{{+ button_display }}</label>
+            {% else %}
+            <label class="btn btn-outline-primary mx-1" for="loadState{{+ button }}">{{+ button_display }}</label>
             {% endif %}
         {% endfor %}
     </div>
