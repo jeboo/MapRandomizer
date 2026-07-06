@@ -145,12 +145,18 @@ hook_main:
     lda $8B
     cmp !savestate_button_combo
     bne .nosavestate
+    lda $8F      ; Newly pressed controller 1 input
+    and !savestate_button_combo
+    beq .nosavestate   ; Reset only if at least one of the inputs is newly pressed
     jsl $85c000  ; save state
     bra .btn_leave
 .nosavestate
     lda $8B
     cmp !loadstate_button_combo
     bne .btn_leave
+    lda $8F      ; Newly pressed controller 1 input
+    and !loadstate_button_combo
+    beq .btn_leave   ; Reset only if at least one of the inputs is newly pressed
     jsl $85c003  ; load state
 .btn_leave
     plp
