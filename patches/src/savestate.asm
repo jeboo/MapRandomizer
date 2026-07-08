@@ -126,9 +126,12 @@ post_load_state:
 {
     JSR post_load_music
     
-    ; Reload BG3 minimap tiles
+    ; Reload BG3 (minimap) tiles, except in credits
+    LDA $0998
+    CMP #$0027
+    BEQ .skip_bg3
     JSL $85A290
-
+.skip_bg3
     RTS
 }
 
