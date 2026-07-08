@@ -226,9 +226,11 @@ post_load_music:
 register_restore_return:
 {
     %a8()
+    ; restore status register
     LDA !REG_4200_NMI : STA $4200
-    LDA #$0F : STA $13 : STA $0F2100
     %a16()
+    ; run NMI once to avoid corrupted palette/flashing
+    JSL $808338
     RTL
 }
 
@@ -391,7 +393,7 @@ load_return:
     
     ; inc counter
     LDA !SRAM_SAVESTATE_LOADS : INC : STA !SRAM_SAVESTATE_LOADS
-    
+
     JMP register_restore_return
 }
 
