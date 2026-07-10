@@ -38,6 +38,7 @@ org $80ffd8
 !SRAM_SAVESTATE_SAVES = $707F08
 !SRAM_SAVESTATE_LOADS = $707F0A
 !SRAM_DMA_BANK = $707F80
+
 !MUSIC_ROUTINE = $808FC1
 
 macro wram_to_sram(wram_addr, size, sram_addr)
@@ -73,6 +74,15 @@ macro sram_to_vram(vram_addr, size, sram_addr)
     dw $0000|$4314, ((<sram_addr>>>16)&$FF)|((<size>&$FF)<<8)    ; A addr = $70xxxx, size = $xx00
     dw $0000|$4316, (<size>>>8)&$FF                              ; size = $80xx ($0000), unused bank reg = $00.
     dw $1000|$420B, $02                                          ; Trigger DMA on channel 1
+endmacro
+
+macro sram_to_sram(sram_src, size, sram_dest)
+    LDX #<size>
+.cp_loop
+    LDA <sram_src>-2,X
+    STA <sram_dest>-2,X
+    DEX : DEX
+    BNE .cp_loop
 endmacro
 
 macro a8() ; A = 8-bit
@@ -308,6 +318,9 @@ save_return:
     %ai16()
     ; Clear inputs
     TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
+
+    ; Save fix_transition_bad_tiles SRAM to prevent possible door transition corruption
+    %sram_to_sram($704000, $400, $770200)
     
     PLB
     TSC : STA !SRAM_SAVED_SP
@@ -368,6 +381,9 @@ load_return:
     PLB
     LDA !SRAM_SAVED_SP : TCS
     
+    ; Restore fix_transition_bad_tiles SRAM to prevent possible door transition corruption
+    %sram_to_sram($770200, $400, $704000)
+
     ; Clear inputs and prevent repeated loads
     TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
     LDA $82FE7A : STA !IH_CONTROLLER_PRI_PREV
