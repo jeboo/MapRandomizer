@@ -191,8 +191,12 @@ startup:
     
     ; Initialize SRAM savestate counters
     lda #$0000
-    sta $707F08 ; saves
-    sta $707F0A ; loads
+    tax
+.init_ss_lp
+    sta !savestate_counts, X
+    inx : inx
+    cpx #$0008
+    bne .init_ss_lp
 
 .skip_init:
 
@@ -258,4 +262,4 @@ clear_timers:
     sta $0de2  ;
     rtl
 
-warnpc !bank_a1_free_space_end
+assert pc() <= !bank_a1_free_space_end

@@ -104,6 +104,10 @@ SaveSeed:
 	LDA !seed_value_1 : STA $700008, X
 SaveAreaMapCoord:
     JSL set_save_markers
+SaveClearSaveStateCurrCounts:
+    LDA #$0000
+    STA !savestate_counts+4
+    STA !savestate_counts+6
 EndSaveGame: PLY : PLX : PLB : PLP : RTL
 
 LoadGame: PHP : REP #$30 : PHB : PHX : PHY

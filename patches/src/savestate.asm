@@ -5,11 +5,13 @@
 arch 65816
 lorom
 
+incsrc "constants.asm"
+
 org $80ffd8
     db 8            ; 256KB SRAM (ensure patch applied after map_progress_maintain)
 
 !bank_85_free_space_start = $85c000
-!bank_85_free_space_end = $85c400
+!bank_85_free_space_end = $85c450
 
 !REG_4200_NMI = $84
 !IH_CONTROLLER_PRI = $8B
@@ -35,8 +37,11 @@ org $80ffd8
 !SRAM_MUSIC_DATA = $707F02
 !SRAM_MUSIC_TRACK = $707F04
 !SRAM_SOUND_TIMER = $707F06
-!SRAM_SAVESTATE_SAVES = $707F08
-!SRAM_SAVESTATE_LOADS = $707F0A
+!SRAM_SAVESTATE_TOTAL_SAVES = !savestate_counts
+!SRAM_SAVESTATE_TOTAL_LOADS = !SRAM_SAVESTATE_TOTAL_SAVES+2
+; Reset after a save at station/ship
+!SRAM_SAVESTATE_CURR_SAVES = !SRAM_SAVESTATE_TOTAL_SAVES+4
+!SRAM_SAVESTATE_CURR_LOADS = !SRAM_SAVESTATE_TOTAL_SAVES+6
 !SRAM_DMA_BANK = $707F80
 
 !MUSIC_ROUTINE = $808FC1
@@ -110,22 +115,21 @@ macro ai16() ; A + X/Y = 16-bit
 endmacro
 
 org !bank_85_free_space_start
+; *****************************************
 ; These jumps must remain at this address, as the fast_reload.asm controller hook hard references them.
-; ********************
     jmp save_state
     jmp load_state
-; ********************
+; These settings must remain at this address for patch.rs
+savestate_total_saves_max:  dw $0
+savestate_total_loads_max:  dw $0
+savestate_curr_saves_max:   dw $0
+savestate_curr_loads_max:   dw $0
+; *****************************************
 
 ; These can be modified to do game-specific things before and after saving and loading
 ; Both A and X/Y are 16-bit here
 pre_load_state:
-{
-    ; If sounds are not enabled, the game won't clear the sounds
-    LDA !DISABLE_SOUNDS : PHA
-    STZ !DISABLE_SOUNDS
-    JSL $82BE17 ; Cancel sound effects
-    PLA : STA !DISABLE_SOUNDS
-    
+{  
     LDA !MUSIC_DATA : STA !SRAM_MUSIC_DATA
     LDA !MUSIC_TRACK : STA !SRAM_MUSIC_TRACK
     LDA !SOUND_TIMER : STA !SRAM_SOUND_TIMER
@@ -135,6 +139,12 @@ pre_load_state:
 post_load_state:
 {
     JSR post_load_music
+    
+    ; If sounds are not enabled, the game won't clear the sounds
+    LDA !DISABLE_SOUNDS : PHA
+    STZ !DISABLE_SOUNDS
+    JSL $82BE17 ; Cancel sound effects
+    PLA : STA !DISABLE_SOUNDS
     
     ; Reload BG3 (minimap) tiles, except in credits
     LDA $0998
@@ -249,6 +259,21 @@ register_restore_return:
 
 save_state:
 {
+    LDA.l savestate_total_saves_max
+    BEQ .skip_total
+    CMP !SRAM_SAVESTATE_TOTAL_SAVES
+    BEQ .no_saves
+.skip_total
+    LDA.l savestate_curr_saves_max
+    BEQ .saves_left
+    CMP !SRAM_SAVESTATE_CURR_SAVES
+    BNE .saves_left
+.no_saves
+    ; Clear inputs
+    TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
+    RTL
+    
+.saves_left
     %ai8()
     PHB
     TDC : PHA : PLB
@@ -265,8 +290,9 @@ save_state:
     BRA .save_dma_regs
 
   .done
-    ; inc counter
-    LDA !SRAM_SAVESTATE_SAVES : INC : STA !SRAM_SAVESTATE_SAVES
+    ; inc counters
+    LDA !SRAM_SAVESTATE_TOTAL_SAVES : INC : STA !SRAM_SAVESTATE_TOTAL_SAVES
+    LDA !SRAM_SAVESTATE_CURR_SAVES : INC : STA !SRAM_SAVESTATE_CURR_SAVES
 
     %ai16()
     LDX #save_write_table
@@ -327,11 +353,32 @@ save_return:
     JMP register_restore_return
 }
 
+load_clear_inputs:
+    ; Clear inputs and prevent repeated loads
+    TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
+    LDA $82FE7A : STA !IH_CONTROLLER_PRI_PREV
+    RTS
+    
 load_state:
 {
-    LDA !SRAM_SAVESTATE_SAVES : BNE .save_exists : RTL
+    LDA !SRAM_SAVESTATE_CURR_SAVES
+    BEQ .no_loads
 
 .save_exists
+    LDA.l savestate_total_loads_max
+    BEQ .skip_total
+    CMP !SRAM_SAVESTATE_TOTAL_LOADS
+    BEQ .no_loads
+.skip_total
+    LDA.l savestate_curr_loads_max
+    BEQ .loads_left
+    CMP !SRAM_SAVESTATE_CURR_LOADS
+    BNE .loads_left
+.no_loads
+    JSR load_clear_inputs
+    RTL
+
+.loads_left
     JSR pre_load_state
 
     %a8()
@@ -385,9 +432,8 @@ load_return:
     %sram_to_sram($770200, $400, $704000)
 
     ; Clear inputs and prevent repeated loads
-    TDC : STA !IH_CONTROLLER_PRI : STA !IH_CONTROLLER_PRI_NEW
-    LDA $82FE7A : STA !IH_CONTROLLER_PRI_PREV
-
+    JSR load_clear_inputs
+    
     ; clear frame held counters
     TDC
     %ai8()
@@ -410,8 +456,9 @@ load_return:
     PLB
     JSR post_load_state
     
-    ; inc counter
-    LDA !SRAM_SAVESTATE_LOADS : INC : STA !SRAM_SAVESTATE_LOADS
+    ; inc counters
+    LDA !SRAM_SAVESTATE_TOTAL_LOADS : INC : STA !SRAM_SAVESTATE_TOTAL_LOADS
+    LDA !SRAM_SAVESTATE_CURR_LOADS : INC : STA !SRAM_SAVESTATE_CURR_LOADS
 
     JMP register_restore_return
 }
