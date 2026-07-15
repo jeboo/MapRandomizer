@@ -126,7 +126,8 @@ whitelist_dict = {
         ['map_area', 0x829440, 0x829443],
         ['map_area', 0x829475, 0x829478],
         ['map_area', 0x829ED5, 0x829ED8],
-        ['item_dots_disappear', 0x82945C, 0x82945F]
+        ['item_dots_disappear', 0x82945C, 0x82945F],
+        ['savestate', 0x80ffd8, 0x80ffd9]
     ],
     'pause_menu_objectives': [
         ['map_area', 0x82910A, 0x82910D],
