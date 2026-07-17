@@ -1495,9 +1495,7 @@ fn upgrade_other_settings(settings: &mut serde_json::Value) -> Result<()> {
         other_settings.insert("all_enemies_respawn".to_string(), false.into());
     }
 
-    if other_settings.get("savestate").is_none()
-        || !other_settings["savestate"].is_object()
-    {
+    if other_settings.get("savestate").is_none() || !other_settings["savestate"].is_object() {
         other_settings.insert(
             "savestate".to_string(),
             serde_json::json!({

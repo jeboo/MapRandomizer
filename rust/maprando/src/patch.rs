@@ -659,12 +659,30 @@ impl Patcher<'_> {
 
         if self.settings.other_settings.savestate.preset {
             patches.push("savestate");
-            self.rom.write_u16(snes2pc(0x85C006), self.settings.other_settings.savestate.savestate_total_saves as isize)?;
-            self.rom.write_u16(snes2pc(0x85C008), self.settings.other_settings.savestate.savestate_total_loads as isize)?;
-            self.rom.write_u16(snes2pc(0x85C00A), self.settings.other_settings.savestate.savestate_checkpoint_saves as isize)?;
-            self.rom.write_u16(snes2pc(0x85C00C), self.settings.other_settings.savestate.savestate_checkpoint_loads as isize)?;
-        }
-        else { // null controller hooks
+            self.rom.write_u16(
+                snes2pc(0x85C006),
+                self.settings.other_settings.savestate.savestate_total_saves as isize,
+            )?;
+            self.rom.write_u16(
+                snes2pc(0x85C008),
+                self.settings.other_settings.savestate.savestate_total_loads as isize,
+            )?;
+            self.rom.write_u16(
+                snes2pc(0x85C00A),
+                self.settings
+                    .other_settings
+                    .savestate
+                    .savestate_checkpoint_saves as isize,
+            )?;
+            self.rom.write_u16(
+                snes2pc(0x85C00C),
+                self.settings
+                    .other_settings
+                    .savestate
+                    .savestate_checkpoint_loads as isize,
+            )?;
+        } else {
+            // null controller hooks
             self.rom.write_u8(snes2pc(0x85C000), 0x6B)?; // RTL
             self.rom.write_u8(snes2pc(0x85C003), 0x6B)?; // RTL
         }
