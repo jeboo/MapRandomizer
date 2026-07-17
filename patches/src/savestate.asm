@@ -120,10 +120,10 @@ org !bank_85_free_space_start
     jmp save_state
     jmp load_state
 ; These settings must remain at this address for patch.rs
-savestate_total_saves_max:  dw $0
-savestate_total_loads_max:  dw $0
-savestate_curr_saves_max:   dw $0
-savestate_curr_loads_max:   dw $0
+savestate_total_saves_max:  skip 2
+savestate_total_loads_max:  skip 2
+savestate_curr_saves_max:   skip 2
+savestate_curr_loads_max:   skip 2
 ; *****************************************
 
 ; These can be modified to do game-specific things before and after saving and loading

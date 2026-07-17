@@ -215,6 +215,9 @@ impl SeedHeaderTemplate<'_> {
         if other_settings.all_enemies_respawn {
             game_variations.push("All enemies respawn");
         }
+        if other_settings.savestate.preset {
+            game_variations.push("Savestates enabled");
+        }
         game_variations
     }
 }

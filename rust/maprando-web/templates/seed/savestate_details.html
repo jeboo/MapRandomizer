@@ -1,0 +1,17 @@
+{% let ss = settings.other_settings.savestate %}
+<div class="row">
+    <div class="col-8 col-sm-9 col-md-8 col-lg-7 col-xl-6">Total saves:</div>
+    <div class="col-4 col-sm-3">{{ ss.savestate_total_saves.to_string() }}</div>
+</div>
+<div class="row">
+    <div class="col-8 col-sm-9 col-md-8 col-lg-7 col-xl-6">Total loads:</div>
+    <div class="col-4 col-sm-3">{{ ss.savestate_total_loads.to_string() }}</div>
+</div>
+<div class="row">
+    <div class="col-8 col-sm-9 col-md-8 col-lg-7 col-xl-6">Checkpoint saves:</div>
+    <div class="col-4 col-sm-3">{{ ss.savestate_checkpoint_saves.to_string() }}</div>
+</div>
+<div class="row">
+    <div class="col-8 col-sm-9 col-md-8 col-lg-7 col-xl-6">Checkpoint loads:</div>
+    <div class="col-4 col-sm-3">{{ ss.savestate_checkpoint_loads.to_string() }}</div>
+</div>

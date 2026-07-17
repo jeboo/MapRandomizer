@@ -368,7 +368,13 @@ function buildSettingsObject() {
             "energy_free_shinesparks": formData.get("energy_free_shinesparks") == "true",
             "all_enemies_respawn": formData.get("all_enemies_respawn") == "true",
             "race_mode": formData.get("race_mode") == "true",
-            "savestate_mode": formData.get("savestate_mode") == "true",
+            "savestate": {
+                "preset": formData.get("savestate_preset") == "true",
+                "savestate_total_saves": tryParseInt(formData.get("savestate_total_saves")),
+                "savestate_total_loads": tryParseInt(formData.get("savestate_total_loads")),
+                "savestate_checkpoint_saves": tryParseInt(formData.get("savestate_checkpoint_saves")),
+                "savestate_checkpoint_loads": tryParseInt(formData.get("savestate_checkpoint_loads")),
+            },
             "random_seed": tryParseInt(formData.get("random_seed")),
             "disable_spikesuit": formData.get("disable_spike_suit") == "true",
             "disable_bluesuit": formData.get("disable_blue_suit") == "true",
@@ -649,6 +655,16 @@ function applyDoorsPreset(preset) {
     document.getElementById("plasma_doors_count").value = preset.plasma_doors_count;
 }
 
+function applySaveStatePreset(preset) {
+    applyRadioValue("saveStateMode", preset.preset);
+
+    document.getElementById("savestate_total_saves").value = preset.savestate_total_saves;
+    document.getElementById("savestate_total_loads").value = preset.savestate_total_loads;
+    document.getElementById("savestate_checkpoint_saves").value = preset.savestate_checkpoint_saves;
+    document.getElementById("savestate_checkpoint_loads").value = preset.savestate_checkpoint_loads;
+}
+
+
 function applyStartLocationSettings(preset) {
     applyRadioValue("startLocation", preset.mode);
     if (preset.mode == "Custom") {
@@ -688,7 +704,7 @@ function applyFullSettingsPreset(preset) {
     applyRadioValue("enableMajorGlitches", other.enable_major_glitches);
     applyRadioValue("speedBooster", other.speed_booster);
     applyRadioValue("raceMode", other.race_mode);
-    applyRadioValue("saveStateMode", other.savestate_mode);
+    applySaveStatePreset(other.savestate);
     document.getElementById("randomSeed").value = other.random_seed;
 }
 
@@ -831,6 +847,14 @@ function doorsSettingsChanged() {
         presetEl.checked = false;
     }
     doorsPresetChanged();
+}
+
+function saveStateSettingsChanged() {
+    for (var presetEl of document.getElementsByClassName("savestate-preset-button")) {
+        presetEl.checked = true;
+    }
+
+    fullSettingsChanged();
 }
 
 function applyAreaAssignmentPreset(preset) {

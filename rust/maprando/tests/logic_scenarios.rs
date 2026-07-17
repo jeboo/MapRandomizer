@@ -349,7 +349,6 @@ fn get_settings(scenario: &Scenario) -> Result<RandomizerSettings> {
             disable_spikesuit: false,
             enable_major_glitches: false,
             race_mode: false,
-            savestate_mode: false,
             random_seed: None,
         },
         debug: false,

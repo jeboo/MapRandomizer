@@ -654,7 +654,7 @@ pub struct OtherSettings {
     pub enable_major_glitches: bool,
     pub speed_booster: SpeedBooster,
     pub race_mode: bool,
-    pub savestate_mode: bool,
+    pub savestate: SaveState,
     pub random_seed: Option<usize>,
 }
 
@@ -796,6 +796,15 @@ impl AreaAssignment {
             },
         }
     }
+}
+
+#[derive(Clone, Copy, Serialize, Deserialize, Debug, PartialEq)]
+pub struct SaveState {
+    pub preset: bool,
+    pub savestate_total_saves: i32,
+    pub savestate_total_loads: i32,
+    pub savestate_checkpoint_saves: i32,
+    pub savestate_checkpoint_loads: i32,
 }
 
 #[derive(Clone, Copy, Serialize, Deserialize, Debug, PartialEq)]
@@ -1486,10 +1495,19 @@ fn upgrade_other_settings(settings: &mut serde_json::Value) -> Result<()> {
         other_settings.insert("all_enemies_respawn".to_string(), false.into());
     }
 
-    if other_settings.get("savestate_mode").is_none()
-        || other_settings["savestate_mode"].as_bool().is_none()
+    if other_settings.get("savestate").is_none()
+        || !other_settings["savestate"].is_object()
     {
-        other_settings.insert("savestate_mode".to_string(), false.into());
+        other_settings.insert(
+            "savestate".to_string(),
+            serde_json::json!({
+                "preset": false,
+                "savestate_total_saves": 0,
+                "savestate_total_loads": 0,
+                "savestate_checkpoint_saves": 0,
+                "savestate_checkpoint_loads": 0
+            }),
+        );
     }
 
     if other_settings.get("disable_spikesuit").is_none()
