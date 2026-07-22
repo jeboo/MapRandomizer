@@ -83,11 +83,11 @@ endmacro
 
 macro sram_to_sram(sram_src, size, sram_dest)
     LDX #<size>
-.cp_loop
+-
     LDA <sram_src>-2,X
     STA <sram_dest>-2,X
     DEX : DEX
-    BNE .cp_loop
+    BNE -
 endmacro
 
 macro a8() ; A = 8-bit
@@ -326,10 +326,10 @@ save_write_table:
     %vram_to_sram($0000, $8000, $750000)
     %vram_to_sram($8000, $8000, $760000)
 
-    ; Copy CGRAM, uses SRAM $770000-$7701FF
+    ; Copy CGRAM, uses SRAM $771000-$7711FF
     dw $1000|$2121, $00    ; CGRAM address
     dw $0000|$4310, $3B80  ; direction = B->A, byte reg, B addr = $213B
-    dw $0000|$4312, $0000  ; A addr = $xx0000
+    dw $0000|$4312, $1000  ; A addr = $xx0000
     dw $0000|$4314, $0077  ; A addr = $77xxxx, size = $xx00
     dw $0000|$4316, $0002  ; size = $02xx ($0200), unused bank reg = $00.
     dw $1000|$420B, $02    ; Trigger DMA on channel 1
@@ -347,6 +347,9 @@ save_return:
 
     ; Save fix_transition_bad_tiles SRAM to prevent possible door transition corruption
     %sram_to_sram($704000, $400, $770200)
+
+    ; Save temporary tilemap segment, uses $770000-$771000
+    %sram_to_sram($703000, $1000, $770000)
     
     PLB
     TSC : STA !SRAM_SAVED_SP
@@ -411,10 +414,10 @@ load_write_table:
     %sram_to_vram($0000, $8000, $750000)
     %sram_to_vram($8000, $8000, $760000)
 
-    ; Copy CGRAM, uses SRAM $770000-$7701FF
+    ; Copy CGRAM, uses SRAM $771000-$7711FF
     dw $1000|$2121, $00    ; CGRAM address
     dw $0000|$4310, $2200  ; direction = A->B, byte reg, B addr = $2122
-    dw $0000|$4312, $2000  ; A addr = $xx0000
+    dw $0000|$4312, $1000  ; A addr = $xx0000
     dw $0000|$4314, $0077  ; A addr = $77xxxx, size = $xx00
     dw $0000|$4316, $0002  ; size = $02xx ($0200), unused bank reg = $00.
     dw $1000|$420B, $02    ; Trigger DMA on channel 1
@@ -430,7 +433,10 @@ load_return:
     
     ; Restore fix_transition_bad_tiles SRAM to prevent possible door transition corruption
     %sram_to_sram($770200, $400, $704000)
-
+    
+    ; Restore temporary tilemap segment
+    %sram_to_sram($770000, $1000, $703000)
+    
     ; Clear inputs and prevent repeated loads
     JSR load_clear_inputs
     
